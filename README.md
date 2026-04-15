@@ -27,7 +27,7 @@ This project simulates infrastructure health monitoring using a FastAPI backend 
 
 ## Project Structure
 
-### Backend 
+### Backend
 
 ```bash
 cd backend
@@ -39,4 +39,10 @@ py -m uvicorn app:app --reload
 # Mac/Linux
 python3 -m uvicorn app:app --reload
 
+```
 
+### Frontend
+
+Open `frontend/index.html` using **VS Code Live Server**.
+
+> In VS Code: right-click `index.html` → "Open with Live Server"
