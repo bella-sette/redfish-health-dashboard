@@ -26,3 +26,17 @@ This project simulates infrastructure health monitoring using a FastAPI backend 
 - JavaScript
 
 ## Project Structure
+
+### Backend 
+
+```bash
+cd backend
+pip install -r requirements.txt
+
+# Windows
+py -m uvicorn app:app --reload
+
+# Mac/Linux
+python3 -m uvicorn app:app --reload
+
+
