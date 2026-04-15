@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dell Redfish Health Analyzer</title>
+
+  <!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+  <!-- YOUR CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">DR</div>
+        <div>
+          <h1>Dell Redfish</h1>
+          <p>Health Analyzer</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h2>Server Scan</h2>
+        <form id="scanForm">
+          <div class="input-group">
+            <label for="ip">iDRAC IP Address</label>
+            <input type="text" id="ip" value="192.168.1.100" required />
+          </div>
+
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" value="root" required />
+          </div>
+
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" value="calvin" required />
+          </div>
+
+          <div class="input-group">
+            <label for="scenario">Test Scenario</label>
+            <select id="scenario">
+              <option value="mixed">Mixed Issues (Default)</option>
+              <option value="healthy">Healthy System</option>
+              <option value="warning">Warning Only</option>
+              <option value="critical">Critical System</option>
+            </select>
+          </div>
+
+          <button type="submit" id="scanBtn">Run Health Scan</button>
+        </form>
+      </div>
+    </aside>
+
+<main class="main-content">
+  <div class="topbar">
+    <div>
+      <p class="eyebrow">Infrastructure Monitoring</p>
+      <h2>System Health Dashboard</h2>
+
+      <!-- ✅ ADD THIS RIGHT HERE -->
+      <div class="scan-meta">
+        <span id="lastScan">Last scan: —</span>
+        <span id="scanTime">Latency: —</span>
+      </div>
+    </div>
+  </div>
+
+      <div id="loading" class="loading-card hidden">
+        <p>Scanning server and analyzing Redfish telemetry...</p>
+      </div>
+
+
+      <div id="result" class="hidden">
+        <div class="metrics-grid">
+          <div class="metric-card">
+          <span class="metric-label">Health Score</span>
+          <div id="healthScore" class="metric-value">100</div>
+        </div>
+
+        <div class="metric-card">
+          <span class="metric-label">Risk Level</span>
+          <div id="riskLevel" class="risk-pill low">LOW</div>
+        </div>
+
+        <!-- ✅ NEW: System Metadata Card -->
+        <div class="metric-card">
+          <span class="metric-label">System Info</span>
+        <div class="system-meta">
+          <div><span class="meta-label">Last Scan:</span> <span id="lastScan">—</span></div>
+          <div><span class="meta-label">Latency:</span> <span id="scanTime">—</span></div>
+          <div><span class="meta-label">Scenario:</span> <span id="scanScenario">—</span></div>
+        </div>
+      </div>
+    </div>
+  <div id="primaryIssueCard" class="panel hidden">
+    <div class="panel-header">
+      <h3>Primary Issue</h3>
+    </div>
+    <div id="primaryIssueText"></div>
+  </div>
+
+        <div class="panel-grid">
+          <section class="panel">
+            <div class="panel-header">
+              <h3>Detected Issues</h3>
+            </div>
+            <ul id="issuesList" class="styled-list"></ul>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header">
+              <h3>Recommended Actions</h3>
+            </div>
+            <ul id="recommendationsList" class="styled-list"></ul>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
