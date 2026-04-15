@@ -1,6 +1,6 @@
 # Redfish Health Dashboard
 
-Interactive full-stack dashboard for visualizing Redfish/iDRAC server health scans.
+Interactive full-stack dashboard that simulates and visualizes Redfish/iDRAC server health, including health scoring, risk classification, and actionable remediation insights.
 
 ## Overview
 
@@ -15,8 +15,19 @@ This project simulates infrastructure health monitoring using a FastAPI backend 
 - FastAPI backend with `/scan` endpoint
 - Scenario-based mock scans (healthy, warning, mixed, critical)
 - Health scoring and risk classification
-- Issue detection and remediation suggestions
+- Detection of system issues with actionable remediation recommendations
 - Dynamic dashboard UI with animated updates
+
+## Example Output
+
+- Health Score: 72%
+- Risk Level: Medium
+- Issues Detected:
+  - High CPU temperature
+  - Warning system status
+- Recommended Actions:
+  - Check cooling system
+  - Review system logs
 
 ## Tech Stack
 
@@ -25,7 +36,7 @@ This project simulates infrastructure health monitoring using a FastAPI backend 
 - CSS
 - JavaScript
 
-## Project Structure
+## Run Locally
 
 ### Backend
 
